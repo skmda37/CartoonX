@@ -1,11 +1,10 @@
- 
-# CartoonX  
+# CartoonX: Cartoon Explanations of Image Classifiers  
 
 ![CartoonX](https://github.com/skmda37/Cartoon-RDE/blob/master/examples/logdir/exp-babyorig.jpg)
 
 ![CartoonX](https://github.com/skmda37/Cartoon-RDE/blob/master/examples/logdir/exp-kobe2.jpg)
 ## Description   
-This repsitory provides an implementation of CartoonX, an explanation method for image classifiers that we introduce in our paper "CartoonX" (preprint under review at ICLR). CartoonX extracts the relevant piece-wise smooth part of an image and provides cartoon-like explanations. We provide a package with an implementation of CartoonX and a jupyter notebook demonstrating its usage with examples.
+This repsitory provides an implementation of CartoonX, an explanation method for image classifiers that we introduce in our preprintpaper [Cartoon Explanation of Image Classifiers - S.Kolek, D.Nguyen, R.Levie, J.Bruna, and G.Kutyniok](https://arxiv.org/abs/2110.03485). CartoonX extracts the relevant piece-wise smooth part of an image and provides cartoon-like explanations. We provide a package with an implementation of CartoonX and a jupyter notebook demonstrating its usage with examples.
 
 ## How to run   
 First, install dependencies   
@@ -14,20 +13,20 @@ First, install dependencies
 git clone https://github.com/skmda37/Cartoon-RDE.git 
 
 # install project   
-cd Cartoon-RDE 
+cd CartoonX 
 pip install -e .   
 pip install -r requirements.txt
  ```   
  Pick a path to a folder of image files that you would like to classify and explain. We have some images for example in `examples/imgdir`. Next run the script as follows: 
  ```bash
 # module folder
-python project/main.py --imgdir=examples/imgdir --logdir=tb_logs --tensorboard --resize_images
+python project/main.py --imgdir=examples/imgdir --logdir=tb_logs --resize_images
 ```
-`imgdir` is a path to a directory containing image files that are to be explained. `logdir` is a directory where the Cartoon RDEs (and Pixel RDEs for comparison) are logged to. If you pass `--tensorboard` then the explanations are logged to tensorboard where they can easily be visualized (on localhost:6006) by running `tensorboard --logdir=logdir --port=6006`. Passing `--resize_images` resizes all images in `logdir` to 256x256 pixels before the classification and explanation. 
+`imgdir` is a path to a directory containing image files that are to be explained. `logdir` is a directory where the CartoonX explanatiions (and Pixel RDEs for comparison) are logged to. If you pass `--tensorboard` then the explanations are logged to tensorboard where they can easily be visualized (on localhost:6006) by running `tensorboard --logdir=logdir --port=6006`. Passing `--resize_images` resizes all images in `logdir` to 256x256 pixels before the classification and explanation. 
 ## Imports
-This project is setup as a package, which means you can now easily import Cartoon RDE like so:
+This project is setup as a package, which means you can now easily import CartoonX like so:
 ```python
-from project.cartoonRDE import CartoonRDE
+from project.cartoonX import CartoonX
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
@@ -64,10 +63,10 @@ plt.show()
 
 ### Citation   
 ```
-@article{cartoonX2021,
+@article{kolek2021cartoon,
   title={Cartoon Explanations of Image Classifiers},
   author={Stefan Kolek, Duc Anh Nguyen, Ron Levie, Joan Bruna, and Gitta Kutyniok},
-  eprint={},
+  eprint={2110.03485},
   archivePrefix={arXiv},
   year={2021}
 }
