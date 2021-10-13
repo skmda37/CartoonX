@@ -4,7 +4,7 @@
 
 ![CartoonX](https://github.com/skmda37/Cartoon-RDE/blob/master/examples/logdir/exp-kobe2.jpg)
 ## Description   
-This repsitory provides an implementation of CartoonX, an explanation method for image classifiers that we introduce in our preprintpaper [Cartoon Explanation of Image Classifiers - S.Kolek, D.Nguyen, R.Levie, J.Bruna, and G.Kutyniok](https://arxiv.org/abs/2110.03485). CartoonX extracts the relevant piece-wise smooth part of an image and provides cartoon-like explanations. We provide a package with an implementation of CartoonX and a jupyter notebook demonstrating its usage with examples.
+This repsitory provides an implementation of CartoonX, an explanation method for image classifiers that we introduce in our preprint paper [Cartoon Explanation of Image Classifiers](https://arxiv.org/abs/2110.03485). CartoonX extracts the relevant piece-wise smooth part of an image and provides cartoon-like explanations. We provide a package with an implementation of CartoonX and a jupyter notebook demonstrating its usage with examples.
 
 ## How to run   
 First, install dependencies   

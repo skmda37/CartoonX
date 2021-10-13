@@ -1,6 +1,6 @@
 # Hparams for CartoonX
 CartoonX:
-    l1lambda: 20 # Lagrange multiplier (weight for sparsity loss)
+    l1lambda: 4 # Lagrange multiplier (weight for sparsity loss)
     step_size: 0.001 # Learning rate for optimizer
     num_steps: 2001 # Number of optimization steps
     batch_size: 64 # Number of noise samples
