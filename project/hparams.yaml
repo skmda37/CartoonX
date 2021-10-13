@@ -1,0 +1,18 @@
+# Hparams for CartoonX
+CartoonX:
+    l1lambda: 20 # Lagrange multiplier (weight for sparsity loss)
+    step_size: 0.001 # Learning rate for optimizer
+    num_steps: 2001 # Number of optimization steps
+    batch_size: 64 # Number of noise samples
+    distortion_measure: "label" # Defines the measure of distortion. Options are: "label", "maximize-target", "all-probs"
+    wave: "db3" # Wavelet system 
+    mode: "zero" # Mode for padding in the discrete wavelet transform
+    J: 5 # Number of scales for discrete wavelet transform (must be in [1,...,log_2num_pixels])
+
+# Hparams for Pixel RDE
+PixelRDE:
+    l1lambda: 4 # Lagrange multiplier (weight for sparsity loss)
+    step_size: 0.001 # Learning rate for optimizer
+    num_steps: 2001 # Number of optimization steps
+    batch_size: 64 # Number of noise samples
+    distortion_measure: "label" # Defines the measure of distortion. Options are: "label", "maximize-target", "all-probs"
