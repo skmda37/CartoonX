@@ -8,7 +8,7 @@
 This repsitory provides an implementation of CartoonX, an explanation method for image classifiers that we introduce in our preprint paper [Cartoon Explanation of Image Classifiers](https://arxiv.org/abs/2110.03485). CartoonX extracts the relevant piece-wise smooth part of an image and provides cartoon-like explanations. We provide a package with an implementation of CartoonX and a jupyter notebook demonstrating its usage with examples.
 
 ## How to run   
-First, install dependencies   
+First, install all dependencies:   
 ```bash
 # clone project   
 git clone https://github.com/skmda37/CartoonX.git 
@@ -23,6 +23,7 @@ source env/bin/activate
 # install pytorch wavelets package (see https://pytorch-wavelets.readthedocs.io/en/latest/readme.html for the docs)
 git clone https://github.com/fbcotter/pytorch_wavelets
 cd pytorch_wavelets
+pip install .
 pip install -r tests/requirements.txt
 cd ..
 
