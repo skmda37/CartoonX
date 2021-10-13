@@ -10,7 +10,7 @@ This repsitory provides an implementation of CartoonX, an explanation method for
 First, install dependencies   
 ```bash
 # clone project   
-git clone https://github.com/skmda37/Cartoon-RDE.git 
+git clone https://github.com/skmda37/CartoonX.git 
 
 # install project   
 cd CartoonX 
@@ -20,7 +20,7 @@ pip install -r requirements.txt
  Pick a path to a folder of image files that you would like to classify and explain. We have some images for example in `examples/imgdir`. Next run the script as follows: 
  ```bash
 # module folder
-python project/main.py --imgdir=examples/imgdir --logdir=tb_logs --resize_images
+python project/main.py --imgdir=examples/imgdir --logdir=logdir --resize_images
 ```
 `imgdir` is a path to a directory containing image files that are to be explained. `logdir` is a directory where the CartoonX explanatiions (and Pixel RDEs for comparison) are logged to. If you pass `--tensorboard` then the explanations are logged to tensorboard where they can easily be visualized (on localhost:6006) by running `tensorboard --logdir=logdir --port=6006`. Passing `--resize_images` resizes all images in `logdir` to 256x256 pixels before the classification and explanation. 
 ## Imports
