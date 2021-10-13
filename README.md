@@ -13,14 +13,20 @@ First, install dependencies
 # clone project   
 git clone https://github.com/skmda37/CartoonX.git 
 
+# Enter directocry
+cd CartoonX 
+
+# Create and activate virtual environment (or conda environment)
+python -m venv env
+source env/bin/activate   
+
 # install pytorch wavelets package (see https://pytorch-wavelets.readthedocs.io/en/latest/readme.html for the docs)
 git clone https://github.com/fbcotter/pytorch_wavelets
 cd pytorch_wavelets
 pip install -r tests/requirements.txt
+cd ..
 
 # install other project dependencies from requirements file   
-cd CartoonX 
-pip install -e .   
 pip install -r requirements.txt
  ```   
  Pick a path to a folder of image files that you would like to classify and explain. We have some images for example in `examples/imgdir`. Next run the script as follows: 
