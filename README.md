@@ -25,6 +25,7 @@ git clone https://github.com/fbcotter/pytorch_wavelets
 cd pytorch_wavelets
 pip install .
 pip install -r tests/requirements.txt
+pytest tests/
 cd ..
 
 # install other project dependencies from requirements file   
