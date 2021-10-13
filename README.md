@@ -1,8 +1,8 @@
 # CartoonX: Cartoon Explanations of Image Classifiers  
 
-![CartoonX](https://github.com/skmda37/Cartoon-RDE/blob/master/examples/logdir/exp-babyorig.jpg)
+![CartoonX](https://github.com/skmda37/CartoonX/examples/logdir/exp-babyorig.jpg)
 
-![CartoonX](https://github.com/skmda37/Cartoon-RDE/blob/master/examples/logdir/exp-kobe2.jpg)
+![CartoonX](https://github.com/skmda37/CartoonX/examples/logdir/exp-kobe2.jpg)
 ## Description   
 This repsitory provides an implementation of CartoonX, an explanation method for image classifiers that we introduce in our preprint paper [Cartoon Explanation of Image Classifiers](https://arxiv.org/abs/2110.03485). CartoonX extracts the relevant piece-wise smooth part of an image and provides cartoon-like explanations. We provide a package with an implementation of CartoonX and a jupyter notebook demonstrating its usage with examples.
 
