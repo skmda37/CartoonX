@@ -13,7 +13,12 @@ First, install dependencies
 # clone project   
 git clone https://github.com/skmda37/CartoonX.git 
 
-# install project   
+# install pytorch wavelets package (see https://pytorch-wavelets.readthedocs.io/en/latest/readme.html for the docs)
+git clone https://github.com/fbcotter/pytorch_wavelets
+cd pytorch_wavelets
+pip install -r tests/requirements.txt
+
+# install other project dependencies from requirements file   
 cd CartoonX 
 pip install -e .   
 pip install -r requirements.txt
