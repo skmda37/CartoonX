@@ -36,7 +36,7 @@ pip install -r requirements.txt
 # module folder
 python project/main.py --imgdir=examples/imgdir --logdir=logdir --resize_images
 ```
-`imgdir` is a path to a directory containing image files that are to be explained. `logdir` is a directory where the CartoonX explanatiions (and Pixel RDEs for comparison) are logged to. If you pass `--tensorboard` then the explanations are logged to tensorboard where they can easily be visualized (on localhost:6006) by running `tensorboard --logdir=logdir --port=6006`. Passing `--resize_images` resizes all images in `logdir` to 256x256 pixels before the classification and explanation. 
+`imgdir` is a path to a directory containing image files that are to be explained. `logdir` is a directory where the CartoonX explanations (and Pixel RDEs for comparison) are logged to. If you pass `--tensorboard` then the explanations are logged to tensorboard where they can easily be visualized (on localhost:6006) by running `tensorboard --logdir=logdir --port=6006`. Passing `--resize_images` resizes all images in `imgdir` to 256x256 pixels before the classification and explanation. 
 ## Imports
 This project is setup as a package, which means you can now easily import CartoonX like so:
 ```python
