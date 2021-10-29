@@ -33,7 +33,7 @@ class CartoonX:
         self.softmax = torch.nn.Softmax(dim=1)
         self.distortion_measure = distortion_measure
         self.obfuscation_strategy = obfuscation_strategy
-        self.init_mask = "ones"
+        self.init_mask = init_mask
         self.return_logs = return_logs
 
     def step(self, std_yl, mean_yl, std_yh, mean_yh, yl, yh, s_yl, s_yh, score, target, num_mask_entries):
