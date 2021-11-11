@@ -5,8 +5,7 @@ from pytorch_wavelets import DWTForward, DWTInverse
 
 class CartoonX:
     def __init__(self, model, device, batch_size, num_steps, step_size, l1lambda, wave, mode, J,
-                 distortion_measure="label", obfuscation_strategy="gaussian-adaptive-noise", init_mask="ones",
-                 return_mask=False, return_logs=False):
+                 distortion_measure="label", obfuscation_strategy="gaussian-adaptive-noise", init_mask="ones", return_logs=False):
         """
         args:
             model: classifier to be explained
@@ -21,7 +20,6 @@ class CartoonX:
             distortion_measure: str - identifier of distortion measure function; either "label", "l2", "kl-divergence", or "weighted-l2"
             obfuscation_strategy: str - either "gaussian-adaptive-noise" or "zero"
             init_mask: str - "ones" or "rand"
-            return_mask: bool - return mask on wavelet coefficients if True
             return_logs: bool - return logs for losses besides explanation if true
         """
         self.model = model
@@ -35,8 +33,7 @@ class CartoonX:
         self.softmax = torch.nn.Softmax(dim=1)
         self.distortion_measure = distortion_measure
         self.obfuscation_strategy = obfuscation_strategy
-        self.init_mask = "ones"
-        self.return_mask = return_mask
+        self.init_mask = init_mask
         self.return_logs = return_logs
 
     def step(self, std_yl, mean_yl, std_yh, mean_yh, yl, yh, s_yl, s_yh, score, target, num_mask_entries):
@@ -290,15 +287,8 @@ class CartoonX:
         # We take absolute value since 0 values in pixel space needs to be smallest values. 
         # We also clamp into 0,1 in case there was an overflow, i.e. pixel values larger than 1 after the inverse dwt
         cartoonX = cartoonX.squeeze(0).clamp_(0,1)
-        mask = [s_yl.detach(), [s.detach() for s in s_yh]]
         
         if self.return_logs:
-            if self.return_mask:
-                return cartoonX, mask, logs
-            else:
-                return cartoonX, logs
+            return cartoonX, logs
         else: 
-            if self.return_mask:
-                return cartoonX, mask
-            else:
-                return cartoonX 
+            return cartoonX 

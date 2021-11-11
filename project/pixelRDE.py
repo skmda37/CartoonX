@@ -56,7 +56,6 @@ class PixelRDE:
             # Measure distortion as squared ell_2 
             new_scores = self.softmax(new_preds)
             # Approximate expected distortion with simple Monte-Carlo estimate
-            assert len(score.shape) == 2 and score.shape[-1]==1000, score
             distortion = torch.mean((score - new_scores)**2, dim=0).sum()
         elif self.distortion_measure == "kl-divergence":
             new_scores = self.softmax(new_preds)
@@ -135,7 +134,7 @@ class PixelRDE:
             score = 1
         elif self.distortion_measure == "l2":
             # Measure distortion as squared ell_2 in output probabilities 
-            score = target
+            score = self.softmax(self.model(x.detach()).detach())
         elif self.distortion_measure ==  "kl-divergence":
             score = self.softmax(self.model(x.detach()).detach())
             assert target is None
@@ -164,9 +163,9 @@ class PixelRDE:
             loss = distortion + self.l1lambda * sparsity
             
             # Log loss terms
-            logs["distortion"].append(distortion.detach().clone())
-            logs["l1-norm"].append(sparsity.detach().clone())
-            logs["loss"].append(loss.detach().clone())
+            logs["distortion"].append(distortion.detach().clone().item())
+            logs["l1-norm"].append(sparsity.detach().clone().item())
+            logs["loss"].append(loss.detach().clone().item())
 
             # Perform optimization step
             optimizer.zero_grad()
@@ -178,7 +177,8 @@ class PixelRDE:
                 s.clamp_(0,1)
          
         if self.return_logs:
-            return s.detach().squeeze(0), logs
+            # Returning the same thing twice for the makedataset.py script for the adversarial detector
+            return s.detach().squeeze(0), s.detach().squeeze(0), logs
         else:
             return s.detach().squeeze(0)
 
