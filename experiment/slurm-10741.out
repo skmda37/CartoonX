@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/math/kolek/dev/CartoonX/experiment/generate_lambda_curve.py", line 112, in <module>
+    model = get_model(name=args.model).eval().to(device)
+  File "/home/math/kolek/dev/CartoonX/experiment/../experiment/utils.py", line 62, in get_model
+    raise NotImplementedError(f"The model {name} was not implemented.")
+NotImplementedError: The model  was not implemented.

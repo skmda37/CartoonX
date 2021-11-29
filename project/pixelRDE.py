@@ -53,10 +53,11 @@ class PixelRDE:
             # Approximate expected distortion with simple Monte-Carlo estimate
             distortion = torch.mean((score - new_scores)**2)
         elif self.distortion_measure == "l2":
-            # Measure distortion as squared ell_2 
+            # Computes distortion as squared ell_2 norm between model outputs
             new_scores = self.softmax(new_preds)
             # Approximate expected distortion with simple Monte-Carlo estimate
-            distortion = torch.mean((score - new_scores)**2, dim=0).sum()
+            assert len(score.shape) == 2 and score.shape[-1]==1000, score
+            distortion = torch.mean(torch.sqrt(((score - new_scores)**2).sum(dim=-1)))
         elif self.distortion_measure == "kl-divergence":
             new_scores = self.softmax(new_preds)
             # Compute average kl-divergence for prediction by obfuscations to original prediction

@@ -1,0 +1,6 @@
+l1lambda: 5 # Lagrange multiplier (weight for sparsity loss)
+step_size: 0.001 # Learning rate for optimizer
+num_steps: 2001 # Number of optimization steps
+batch_size: 64 # Number of noise samples
+distortion_measure: "l2" # Defines the measure of distortion. Options are: "label", "maximize-target", "all-probs"
+return_logs: True
