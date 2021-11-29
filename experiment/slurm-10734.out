@@ -1,9 +1,0 @@
-Processing image 0
-Traceback (most recent call last):
-  File "/home/math/kolek/dev/CartoonX/experiment/generate_lambda_curve.py", line 146, in <module>
-    main(logdir, model, dataset, Expl, hparams_expl)
-  File "/home/math/kolek/dev/CartoonX/experiment/generate_lambda_curve.py", line 66, in main
-    x_expl, x_mask, logs = expl(x, label)
-  File "/home/math/kolek/dev/CartoonX/experiment/../project/cartoonX.py", line 239, in __call__
-    assert target is None
-AssertionError

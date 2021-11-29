@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "/home/math/kolek/dev/CartoonX/experiment/generate_lambda_curve.py", line 122, in <module>
-    with open(os.path.join(sys.path[0], args.expl_params)) as f:
-FileNotFoundError: [Errno 2] No such file or directory: '/home/math/kolek/dev/CartoonX/experiment/hparams/.yaml'
-slurmstepd-cc-gpu-n02: error: *** JOB 10738 ON cc-gpu-n02 CANCELLED AT 2021-11-15T18:53:27 ***
