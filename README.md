@@ -16,7 +16,7 @@ on the rate-distortion explanation (RDE) framework. Natural images are roughly p
 # Setup
 Python 3.7.x and newer are supported:
 
-```bash
+<pre><code>```bash
 # clone project   
 git clone https://github.com/skmda37/CartoonX.git 
 
@@ -37,7 +37,7 @@ cd ..
 
 # install other project dependencies from requirements file   
 pip install -r requirements.txt
-```   
+```</code></pre>
     
     
 # Contents
