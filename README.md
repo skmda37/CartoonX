@@ -43,8 +43,8 @@ pip install -r requirements.txt
 # Contents
 There are two folders:
 <ol>
-<li><code><a href = "./code/">code/</a></code>: Contains the code to use CartoonX.</li>
-<li><code><a href = "./imgs/">imgs/</a></code>: Contains all images for this README.md.</li>
+<li>The <code><a href = "./code/">code/</a></code> folder contains the code to use CartoonX.</li>
+<li>The <code><a href = "./imgs/">imgs/</a></code> folder contains all images for this README.md.</li>
 </ol>
 
 
