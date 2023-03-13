@@ -14,19 +14,20 @@ on the rate-distortion explanation (RDE) framework. Natural images are roughly p
 
 
 # Setup
-Python 3.8.x and newer are supported:
+Python 3.7.x and newer are supported:
 
-## clone project   
+```bash
+# clone project   
 git clone https://github.com/skmda37/CartoonX.git 
 
-## Enter directocry
+# Enter directocry
 cd CartoonX 
 
-## Create and activate virtual environment (or conda environment)
+# Create and activate virtual environment (or conda environment)
 python -m venv env
 source env/bin/activate   
 
-## install pytorch wavelets package (see https://pytorch-wavelets.readthedocs.io/en/latest/readme.html for the docs)
+# install pytorch wavelets package (see https://pytorch-wavelets.readthedocs.io/en/latest/readme.html for the docs)
 git clone https://github.com/fbcotter/pytorch_wavelets
 cd pytorch_wavelets
 pip install .
@@ -34,9 +35,14 @@ pip install -r tests/requirements.txt
 pytest tests/
 cd ..
 
-## install other project dependencies from requirements file   
+# install other project dependencies from requirements file   
 pip install -r requirements.txt
-
+ ```   
+ Pick a path to a folder of image files that you would like to classify and explain. We have some images for example in `examples/imgdir`. Next run the script as follows: 
+ ```bash
+    
+    
+    
 # Contents
 <div>
 <ol>
