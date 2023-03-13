@@ -38,9 +38,6 @@ cd ..
 # install other project dependencies from requirements file   
 pip install -r requirements.txt
  ```   
- Pick a path to a folder of image files that you would like to classify and explain. We have some images for example in `examples/imgdir`. Next run the script as follows: 
- ```bash
-    
     
     
 # Contents
