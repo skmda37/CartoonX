@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
+**/__pycache__/
 
 # Environments
 venv
@@ -16,4 +16,5 @@ data/
 .DS_Store
 
 
-
+# SFTP
+sftp-config.json

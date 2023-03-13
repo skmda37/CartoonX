@@ -1,0 +1,92 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "src/cartoonx/__init__.py"
+
+[project]
+name = "cartoonx"
+
+version = "0.1.4"
+description = "Wavelet-domain saliency maps for image classifiers (ECCV 2022 Oral, CVPR 2023)"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [
+  { name = "Stefan Kolek", email = "skmda37@gmail.com" },
+]
+keywords = [
+  "explainability",
+  "saliency-maps",
+  "xai",
+  "wavelets",
+  "computer-vision",
+  "deep-learning",
+  "pytorch",
+  "interpretability",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Scientific/Engineering :: Image Processing",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Operating System :: OS Independent",
+  "License :: OSI Approved :: MIT License",
+]
+
+# NOTE: PyTorch is intentionally excluded as a hard dependency because it
+# must be installed separately to match the user's CUDA version.
+# See: https://pytorch.org/get-started/locally/
+#
+# Minimum versions: install pytorch >= 2.0 and torchvision >= 0.15 separately.
+dependencies = [
+    "matplotlib>=3.7.0",
+    "pytorch-wavelets",
+    "pywavelets>=1.6.0",
+    "tqdm>=4.67.1",
+    "setuptools==69.5.1"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0",
+  "pytest-cov>=4.0",
+  "ruff>=0.4",
+  "jupyter>=1.0",
+  "ipykernel>=6.0",
+]
+notebook = [
+  "jupyter>=1.0",
+  "ipykernel>=6.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/skmda37/CartoonX"
+Repository = "https://github.com/skmda37/CartoonX"
+"Bug Tracker" = "https://github.com/skmda37/CartoonX/issues"
+"ECCV 2022 Paper" = "https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136720439.pdf"
+"CVPR 2023 Paper" = "https://openaccess.thecvf.com/content/CVPR2023/papers/Kolek_Explaining_Image_Classifiers_With_Multiscale_Directional_Image_Representation_CVPR_2023_paper.pdf"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cartoonx"]
+
+# --- Linting ---
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+# --- Testing ---
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--tb=short"
+
+[tool.uv.sources]
+pytorch-wavelets = { git = "https://github.com/fbcotter/pytorch_wavelets.git" }
