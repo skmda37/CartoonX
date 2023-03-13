@@ -43,14 +43,15 @@ pip install -r requirements.txt
 # Contents
 <div>
 <ol>
-		<li> <code><a href = "./code/">code/</a></code>: Contains the code to use CartoonX.</li>
-		<li> <code><a href = "./imgs/">libs/</a></code>: Contains all images for this README.md.</li>
+<li><code><a href = "./code/">code/</a></code>: Contains the code to use CartoonX.</li>
+<li><code><a href = "./imgs/">imgs/</a></code>: Contains all images for this README.md.</li>
 	</ol>
 </div>
 
 # How to Run?
 <div>
-First, do <code>cd <a href = "./code/">code/</a></code>. Then you can explain models with CartoonX in <code><a href = "./code/visualize_example_explanations.ipynb">visualize_example_explanations.ipynb</a> </code>
+First, do <code>cd <a href = "./code/">code/</a></code>. Then you can explain models with CartoonX in <code><a href = "./code/visualize_example_explanations.ipynb">visualize_example_explanations.ipynb</a></code>. The actual code for CartoonX is in  <code><a href = "./code/cartoonx.py">./code/cartoonx.py/</a></code>
+<br>
 <br>
     <div style="text-align: center;">
         <img width = "500" src = "./imgs/explanation_example.png", style="margin-top: 10px;">
