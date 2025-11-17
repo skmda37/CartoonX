@@ -1,0 +1,40 @@
+[build-system] 
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cartoonx"
+version = "0.1.0"
+description = """
+Mask-based explanation method for image classifiers in Wavelet/Shearlet space.
+"""
+authors = [
+  { name = "Stefan Kolek", email = "skmda37@gmail.com"}
+]
+
+maintainers = [
+  { name = "Stefan Kolek", email = "skmda37@gmail.com"}
+]
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+dependencies = [
+    "matplotlib>=3.9.0",
+    "pytorch-wavelets",
+    "pywavelets>=1.6.0",
+    "tqdm>=4.67.1",
+] # numpy, torch
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Build Tools",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+]
+
+[project.urls]
+"Source" = "https://github.com/skmda37/CartoonX"
+
+[tool.uv.sources]
+pytorch-wavelets = { git = "https://github.com/fbcotter/pytorch_wavelets.git" }
