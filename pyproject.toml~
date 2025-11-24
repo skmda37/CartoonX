@@ -19,7 +19,7 @@ readme = "README.md"
 license = "MIT"
 requires-python = ">=3.9"
 dependencies = [
-    "matplotlib>=3.7.0",
+    "matplotlib>=3.9.0",
     "pytorch-wavelets",
     "pywavelets>=1.6.0",
     "tqdm>=4.67.1",
