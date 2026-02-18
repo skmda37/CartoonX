@@ -14,6 +14,7 @@ class CartoonXFactory:
         if system == 'wavelets':
             xpl = WaveletBasedCartoonX(**kwargs)
         elif system == 'shearlets':
+            raise NotImplementedError('Shearlet based CartoonX was not implemented yet')
             xpl = ShearletBasedCartoonX(**kwargs)
         else:
             raise ValueError(
