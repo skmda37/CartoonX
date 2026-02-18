@@ -1,3 +1,5 @@
+import time
+
 from collections import namedtuple, defaultdict
 from abc import ABCMeta, abstractmethod
 from typing import List, Tuple, Union
@@ -8,6 +10,15 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from pytorch_wavelets import DWTForward, DWTInverse
+import pyshearlab
+from cartoonx.utils.timer import tic, toc
+
+import cartoonx
+from pathlib import Path
+from torchvision import transforms
+from torchvision import models
+from PIL import Image
+
 
 
 class AbstractCartoonX(metaclass=ABCMeta):
@@ -49,6 +60,13 @@ class AbstractCartoonX(metaclass=ABCMeta):
     def __repr__(self) -> str:
         pass
 
+    def _check_input_validity(self, x: torch.Tensor):
+        if len(x.shape) != 4:
+            raise ValueError(
+                f'Expected to have 4 dimensions but got input shape {x.shape}'
+            )
+        
+    
 
 class WaveletBasedCartoonX(AbstractCartoonX):
 
@@ -88,10 +106,7 @@ class WaveletBasedCartoonX(AbstractCartoonX):
         spatial_reg: float = 1e-4,
         wavelet_reg: float = 1e-4
     ) -> dict:
-        if len(x.shape) != 4:
-            raise ValueError(
-                f'Expected to have 4 dimensions but got input shape {x.shape}'
-            )
+        self._check_input_validity(x)
 
         # dl: lowpass wavelet coeffs; dh: highpass wavelet coeffs
         dl, dh = self.fwd_dwt(x)
@@ -244,13 +259,58 @@ class ShearletBasedCartoonX(AbstractCartoonX):
         model: nn.Module,
         x: torch.Tensor,
         y: torch.Tensor,
-        lr: float = 1e-2
+        lr: float = 1e-2,
+        N: int = 300,
+        mask_init: str = 'ones',
+        perturbations: str = 'gaussian',
+        samplesize: int = 64,
+        spatial_reg_type: Union[None, str] = 'l1',
+        spatial_reg: float = 1e-4,
+        shearlet_reg: float = 1e-4
     ) -> dict:
+        self._check_input_validity(x)
+
+        # Initialize shearlet system
+        h, w = x.size(-2), x.size(-1) # image height, width
+        print(h,w)
+        # WARNING: there is a bug in  pyshearlab.SLgetShearletSystem2D(0, h, w, 4)
+        #          waiting for a fix
+        shearletSystem = pyshearlab.SLgetShearletSystem2D(0, h, w, 4)
+        shearlets = shearletSystem['shearlets']
+        dualFrameWeights = shearletSystem['dualFrameWeights']
+        torch_shearlets =  torch.from_numpy(shearlets[np.newaxis]).type(dtype)
+
+        # Get shearlet coefficients (list of shearlet coeffs per color channels)
+        self.sh_coeffs = [
+            torchsheardec2D(x[:,i,:,:], torch_shearlets).permute(0,3,1,2)
+            for i in range(x.size(1))
+        ]
+            
+        # Get shearlet coefficients of gray scale image
+        x_gray = x.sum(dim=1) / 3
+        self.sh_gray = torchsheardec2D(x_gray, torch_shearlets).permute(0,3,1,2)
+        assert self.sh_gray.size(0)==x.size(0)
+        assert len(self.sh_gray.shape)==4
+
+        # Initialize shearlet mask
+        sh_mask = self._init_mask(mode=mask_init)
+
+        # Initialize optimizer
+        opt = torch.optim.Adam([sh_mask], lr=lr)
+
+        raise NotImplementedError('ShearletBasedCartoonX was not yet implemented. Waiting for a fix for a bug in pyshearlab.')
+                
         return {}
 
-    def _init_mask(self):
-        raise NotImplementedError()
-
+    def _init_mask(self, mode: str) -> torch.Tensor:
+        if mode == 'ones':
+            sh_mask = torch.ones_like(self.sh_gray, requires_grad=True)
+        else:
+            raise ValueError(
+                'Only mask_init="ones" is implemented'
+            )
+        return sh_mask
+    
     def _sample_perturbations(
         self,
         samplesize: int,
@@ -272,3 +332,41 @@ class ShearletBasedCartoonX(AbstractCartoonX):
         raise NotImplementedError()
 
     def __repr__(self) -> str: return 'ShearletBasedCartoonX'
+
+
+if __name__ == '__main__':
+
+    
+    # Test Shearlet based CartoonX
+    devid = 0
+    if torch.backends.mps.is_available():
+        device = 'mps'
+    elif torch.cuda.is_available():
+        device = f'cuda:{devid}'
+    else:
+        raise RuntimeError('No gpu available')
+    # Get image classifier
+    model = models.mobilenet_v3_small(pretrained=True).eval().to(device)
+    # Get image as torch tensor
+    img = Image.open(Path('../../../imgs') / 'kobe.jpg').convert('RGB')
+    tf = transforms.Compose(
+        [
+            transforms.ToTensor(),
+            transforms.Resize(size=(224, 224))
+        ]
+    )
+    x = tf(img).unsqueeze(0).to(devid)
+    y = torch.tensor([430]).to(devid)  # 430=Basketball class id
+
+    # Init wavelet-based explainer
+    cartoon = cartoonx.CartoonXFactory.create(system='shearlets', device=device)
+
+    hparams = {'N': 300, 'shearlet_reg':  1e-3, 'spatial_reg':  1e-4}
+
+    result = cartoon.explain(model, x, y, **hparams)
+    
+    print('Completed test...')
+
+    
+    
+    
