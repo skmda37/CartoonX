@@ -2,9 +2,12 @@
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+[tool.hatch.version]
+path = "src/cartoonx/__init__.py"
+
 [project]
 name = "cartoonx"
-version = "0.1.0"
+version = "0.1.2"
 description = "Wavelet-domain saliency maps for image classifiers (ECCV 2022 Oral, CVPR 2023)"
 readme = "README.md"
 license = { text = "MIT" }
