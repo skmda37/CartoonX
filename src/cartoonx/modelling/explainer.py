@@ -93,7 +93,9 @@ class WaveletBasedCartoonX(AbstractCartoonX):
                 f'Expected to have 4 dimensions but got input shape {x.shape}'
             )
 
-        # dl: lowpass wavelet coeffs; dh: highpass wavelet coeffs
+        # dl is a tensor of wavelet coeffs for lower coefficients
+        # dh is a list of tensors of horizontal, vertical, and diagonal
+        # wavelet coefficients for higher frequencies
         dl, dh = self.fwd_dwt(x)
         self.dl, self.dh = dl, dh  # wavelet coeffs of x are constant
 
@@ -150,8 +152,7 @@ class WaveletBasedCartoonX(AbstractCartoonX):
                 stats['wavelet_l1'].append(W.item())
 
                 pbar.set_description_str(
-                    f"CE {CE.item()} - "
-                    f"WAVELET MASK L1 {ml.sum() + sum([m.sum() for m in mh])}"
+                    f'Optimizing CartoonX Mask (Loss={CE.item():.3f})'
                 )
                 pbar.update(1)
 

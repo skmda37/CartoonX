@@ -7,7 +7,7 @@ path = "src/cartoonx/__init__.py"
 
 [project]
 name = "cartoonx"
-version = "0.1.2"
+version = "0.1.3"
 description = "Wavelet-domain saliency maps for image classifiers (ECCV 2022 Oral, CVPR 2023)"
 readme = "README.md"
 license = { text = "MIT" }
@@ -48,6 +48,7 @@ dependencies = [
     "pytorch-wavelets",
     "pywavelets>=1.6.0",
     "tqdm>=4.67.1",
+    "setuptools==69.5.1"
 ]
 
 [project.optional-dependencies]
