@@ -29,11 +29,11 @@
 | Integrated Gradients, LRP | Pixel | Noisy |
 | SHAP, LIME | Pixel | Blocky/Segmented |
 | GradCAM | Pixel | Smooth |
-| **CartoonX** | **Wavelet/Shearlet** | **Piecewise-smooth** |
+| **CartoonX** | **Wavelet/Shearlet** | **Piecewise-Smooth** |
 
-Most saliency methods highlight individual pixels (e.g. Integrated Gradients, LRP), blocky superpixels (e.g. SHAP, LIME) or very smooth windows of pixels (e.g. GradCAM). **CartoonX** highlights piece-wise smooth image *structures*, allowing it to separate fine-image structures such as classifier-relevant edges and textures. 
+Most saliency methods highlight individual pixels (e.g. Integrated Gradients, LRP), blocky superpixels (e.g. SHAP, LIME) or very smooth windows of pixels (e.g. GradCAM). **CartoonX** highlights piece-wise smooth image *structures*, allowing it to separate classifier-relevant edges and textures that other methods miss. 
 
-CartoonX ability to highlight fine image details can also make it an excellent tool to visually understand mislassifications. See for instance the following examples of two images of a hanger and a soccer ball that a classifier confused for a crab and an iron. 
+CartoonX is an excellent tool to visually understand predictions that are driven by low-level structures. For instance in the two examples below a classifier confused a hanger and a soccer ball with a crab and an iron respectively. The CartoonX helps us understand how the classifier may have seen an iron in the ball and a crab in the hanger.
 
 <p align="center">
   <img src="./imgs/figure_crab.png" alt="CartoonX explanation example" width="700"/>
