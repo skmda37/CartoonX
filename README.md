@@ -6,7 +6,6 @@
 <p align="center">
   <a href="https://pypi.org/project/cartoonx/"><img src="https://img.shields.io/pypi/v/cartoonx?color=blue" alt="PyPI version"/></a>
   <a href="https://pypi.org/project/cartoonx/"><img src="https://img.shields.io/pypi/pyversions/cartoonx" alt="Python versions"/></a>
-  <a href="https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136720439.pdf"><img src="https://img.shields.io/badge/ECCV%202022-Oral-red" alt="ECCV 2022 Oral"/></a>
   <a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Kolek_Explaining_Image_Classifiers_With_Multiscale_Directional_Image_Representation_CVPR_2023_paper.pdf"><img src="https://img.shields.io/badge/CVPR%202023-paper-red" alt="CVPR 2023"/></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"/></a>
 </p>
@@ -33,7 +32,7 @@
 
 Most saliency methods highlight individual pixels (e.g. Integrated Gradients, LRP), blocky superpixels (e.g. SHAP, LIME) or very smooth windows of pixels (e.g. GradCAM). **CartoonX** highlights piece-wise smooth image *structures*, allowing it to separate classifier-relevant edges and textures that other methods miss. 
 
-CartoonX is an excellent tool to visually understand predictions that are driven by low-level structures. For instance in the two examples below a classifier confused a hanger and a soccer ball with a crab and an iron respectively. The CartoonX helps us understand how the classifier may have seen an iron in the ball and a crab in the hanger.
+CartoonX is an excellent tool to visually understand predictions that are driven by low-level structures. For instance in the first two examples below a classifier confused a hanger and a soccer ball with a crab and an iron respectively. CartoonX helps us understand how the classifier may have seen an iron in the ball and a crab in the hanger.
 
 <p align="center">
   <img src="./imgs/figure_crab.png" alt="CartoonX explanation example" width="700"/>
@@ -44,6 +43,13 @@ CartoonX is an excellent tool to visually understand predictions that are driven
   <img src="./imgs/figure_iron.png" alt="CartoonX explanation example" width="700"/>
 </p>
 
+<p align="center">
+  <img src="./imgs/figure_seaslug.png" alt="CartoonX explanation example" width="700"/>
+</p>
+
+<p align="center">
+  <img src="./imgs/figure_frog.png" alt="CartoonX explanation example" width="700"/>
+</p>
 
 ---
 

@@ -41,9 +41,10 @@ classifiers = [
 #
 # Minimum versions: install pytorch >= 2.0 and torchvision >= 0.15 separately.
 dependencies = [
-  "numpy>=1.23",
-  "Pillow>=9.0",
-  "pytorch-wavelets>=1.3.0",
+    "matplotlib>=3.7.0",
+    "pytorch-wavelets",
+    "pywavelets>=1.6.0",
+    "tqdm>=4.67.1",
 ]
 
 [project.optional-dependencies]
@@ -57,7 +58,6 @@ dev = [
 notebook = [
   "jupyter>=1.0",
   "ipykernel>=6.0",
-  "matplotlib>=3.6",
 ]
 
 [project.urls]
@@ -82,3 +82,6 @@ select = ["E", "F", "I", "UP"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "--tb=short"
+
+[tool.uv.sources]
+pytorch-wavelets = { git = "https://github.com/fbcotter/pytorch_wavelets.git" }
