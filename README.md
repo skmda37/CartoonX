@@ -54,7 +54,19 @@ CartoonX is an excellent tool to visually understand predictions that are driven
 ---
 
 ## Installation
- **Prerequisite:** Install [PyTorch](https://pytorch.org/get-started/locally/) for your platform/CUDA version first. Then install our package with pip.
+If you don't have one yet, make a python virtual environment using `python>=3.9`.
+
+```bash
+uv venv --python 3.XX
+```
+
+Activate your environment.
+
+```bash
+source .venv/bin/activate
+```
+
+Install [PyTorch](https://pytorch.org/get-started/locally/) for your platform/CUDA version first. Then install our package with pip.
 
 ```bash
 uv pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ cartoonx
