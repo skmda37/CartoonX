@@ -57,7 +57,7 @@ CartoonX is an excellent tool to visually understand predictions that are driven
  **Prerequisite:** Install [PyTorch](https://pytorch.org/get-started/locally/) for your platform/CUDA version first. Then install our package with pip.
 
 ```bash
-uv pip install cartoonx
+uv pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ cartoonx
 ```
 
 ---
@@ -83,7 +83,12 @@ image = ...  # torch.Tensor
 explanation = cartoon.explain(model, x, y)
 ```
 
-For a full walkthrough example including visualisation, see [`examples/mobilenetv3.py`](examples/mobilenetv3.py).
+For a full walkthrough example including visualisation, see [`examples/mobilenetv3.py`](examples/mobilenetv3.py). You can run it via
+
+```bash
+cd ./examples
+python mobilenetv3.py
+```
 
 
 ---

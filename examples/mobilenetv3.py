@@ -17,6 +17,7 @@ import numpy as np
 
 import cartoonx 
 
+BASE_DIR = Path(__file__).resolve().parent
 
 def run(devid: int, hparams: dict) -> None:
     if torch.backends.mps.is_available():
@@ -28,7 +29,7 @@ def run(devid: int, hparams: dict) -> None:
     # Get image classifier
     model = models.mobilenet_v3_small(pretrained=True).eval().to(device)
     # Get image as torch tensor
-    img = Image.open(Path('../imgs') / 'kobe.jpg').convert('RGB')
+    img = Image.open(BASE_DIR.parent / 'imgs' / 'kobe.jpg').convert('RGB')
     tf = transforms.Compose(
         [
             transforms.ToTensor(),
