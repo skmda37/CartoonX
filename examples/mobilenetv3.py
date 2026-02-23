@@ -81,6 +81,7 @@ plt.imshow(result['cartoonx'].cpu()[0].permute(1, 2, 0))
 plt.axis('off')
 plt.savefig('cartoonx.png')
 plt.show()
+print('Saved figure in ./cartoonx.png')
 
 # Uncomment code below to see effect of hyperparameters
 # code plots CartoonX with increasing wavelet mask and spatial energy penalties
