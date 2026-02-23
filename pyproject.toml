@@ -7,7 +7,8 @@ path = "src/cartoonx/__init__.py"
 
 [project]
 name = "cartoonx"
-version = "0.1.3"
+
+version = "0.1.4"
 description = "Wavelet-domain saliency maps for image classifiers (ECCV 2022 Oral, CVPR 2023)"
 readme = "README.md"
 license = { text = "MIT" }
