@@ -4,8 +4,8 @@
   <img src="./imgs/figure_hound.png" alt="CartoonX explanation example" width="700"/>
 </p>
 <p align="center">
-  <a href="https://pypi.org/project/cartoonx/"><img src="https://img.shields.io/pypi/v/cartoonx?color=blue" alt="PyPI version"/></a>
-  <a href="https://pypi.org/project/cartoonx/"><img src="https://img.shields.io/pypi/pyversions/cartoonx" alt="Python versions"/></a>
+  <a href="https://github.com/skmda37/bigfile"><img src="https://img.shields.io/badge/python-3.9%2B-blue" alt="Python 3.9+"/></a>
+  <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-compatible-EE4C2C" alt="PyTorch compatible"/></a>
   <a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Kolek_Explaining_Image_Classifiers_With_Multiscale_Directional_Image_Representation_CVPR_2023_paper.pdf"><img src="https://img.shields.io/badge/CVPR%202023-paper-red" alt="CVPR 2023"/></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"/></a>
 </p>
